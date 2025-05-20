@@ -1,6 +1,7 @@
 import type { Slide } from '$lib/slide'
 
 import MalteseWords from '$assets/components/MalteseWords.svelte'
+import Stuff from '$assets/components/Stuff.svelte'
 import TimeLine from '$assets/components/TimeLine.svelte'
 import EuropeMap from '$assets/images/europe-map.jpg'
 import GraphicDesign from '$assets/images/graphic-design.gif'
@@ -34,6 +35,10 @@ export default [
   {
     h2: 'which of these is a swear word?',
     component: MalteseWords,
+  },
+  {
+    // h1: "stuff I'm into",
+    component: Stuff,
   },
   {
     h1: 'my life so far',
