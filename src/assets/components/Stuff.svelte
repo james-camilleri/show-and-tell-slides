@@ -1,5 +1,6 @@
 <script lang="ts">
   import * as d3 from 'd3'
+  import SvelteMarkdown from 'svelte-markdown'
 
   import { SeededRandom } from '$lib/random'
   import { hijackNavigation } from '$lib/slide'
@@ -16,32 +17,37 @@
   }
 
   const STUFF: Thing[] = [
-    { name: 'architecture', obsession: 1, conversation: 1 },
+    { name: 'architecture', obsession: 1, conversation: 3 },
     { name: 'board games', obsession: 1, conversation: 1 },
-    { name: 'code', obsession: 1, conversation: 1 },
-    { name: 'coffee', obsession: 4, conversation: 1 },
-    { name: 'cooking', obsession: 3, conversation: 1 },
-    { name: 'creative coding', obsession: 1, conversation: 1 },
-    { name: 'design', obsession: 3, conversation: 1 },
+    { name: 'code', obsession: 2, conversation: 3 },
+    { name: 'coffee', obsession: 4, conversation: 4 },
+    { name: 'cooking', obsession: 3, conversation: 3 },
+    { name: 'creative coding', obsession: 3, conversation: 3 },
+    { name: 'design', obsession: 3, conversation: 4 },
     { name: 'eating', obsession: 4, conversation: 1 },
-    { name: 'escape rooms', obsession: 1, conversation: 1 },
-    { name: 'printing presses', obsession: 3, conversation: 1 },
+    { name: 'escape rooms', obsession: 2, conversation: 2 },
+    { name: 'printing presses', obsession: 3, conversation: 5 },
     { name: 'plants', obsession: 3, conversation: 1 },
     { name: 'tap dance', obsession: 1, conversation: 1 },
-    { name: 'tea', obsession: 3, conversation: 1 },
+    { name: 'tea', obsession: 3, conversation: 2 },
     { name: 'orange', obsession: 5, conversation: 1 },
-    { name: 'theatre', obsession: 1, conversation: 1 },
-    { name: 'travel', obsession: 2, conversation: 1 },
-    { name: 'typewriters', obsession: 5, conversation: 1 },
-    { name: 'typography', obsession: 5, conversation: 1 },
-    { name: 'whisky', obsession: 4, conversation: 1 },
+    { name: 'theatre', obsession: 2, conversation: 4 },
+    { name: 'travel', obsession: 2, conversation: 3 },
+    { name: 'typewriters', obsession: 5, conversation: 5 },
+    { name: 'typography', obsession: 5, conversation: 5 },
+    { name: 'whisky', obsession: 4, conversation: 4 },
   ]
+
+  const SUBTITLES = {
+    obsession: 'ranked by how out of hand<br>the obsession is getting',
+    conversation: 'ranked by how difficult it would be<br>to escape a conversation with me',
+  }
 
   const random = new SeededRandom('stuff')
 
   const CHART_WIDTH = 1920
   const CHART_HEIGHT = 1080
-  const MARGIN = 1 // ?
+  const MARGIN = 1
 
   const pack = d3
     .pack()
@@ -58,6 +64,10 @@
     }
 
     return thing[valueKey]
+  }
+
+  function getOpacity(value: number) {
+    return 0.7 + value * 0.07
   }
 
   let data: d3.HierarchyCircularNode<Thing>[] = $derived(
@@ -96,13 +106,21 @@
 <svelte:window onkeydowncapture={onKeyPress} />
 
 <div class="wrapper">
+  {#if valueKey}
+    <h2><SvelteMarkdown source={SUBTITLES[valueKey]} isInline /></h2>
+  {/if}
   <svg viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}>
-    {#each data as thing (thing.data.name)}
+    {#each data as thing, i (i)}
       <g style:transform="translate({thing.x}px, {thing.y}px)">
-        <g style:transform="scale({thing.r})">
-          <circle r={1} fill="var(--dark)"> </circle>
-        </g>
-        <text clip-path="circle({thing.r})" text-anchor="middle" dominant-baseline="middle">
+        <circle
+          cx={0}
+          cy={0}
+          r={thing.r}
+          fill="var(--dark)"
+          fill-opacity={getOpacity(getValue(thing.data))}
+        >
+        </circle>
+        <text text-anchor="middle" dominant-baseline="middle">
           <tspan x="0" y="0" style:font-size={Math.max(1.5, getValue(thing.data) * 0.6) + 'rem'}
             >{thing.data.name}</tspan
           >
@@ -113,16 +131,25 @@
 </div>
 
 <style>
+  .wrapper {
+    display: flex;
+  }
+
   svg {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
+    z-index: -1;
     width: 100%;
-    height: 100%;
+    height: 90%;
   }
 
   g {
-    transition: transform 5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  circle {
+    transition: r 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   text {
@@ -131,9 +158,5 @@
     color: var(--light);
     text-align: center;
     white-space: pre;
-  }
-
-  circle {
-    transition: transform 5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 </style>

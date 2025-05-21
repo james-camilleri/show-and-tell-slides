@@ -5,15 +5,14 @@
   --dark: hsl(0deg 0% 8%);
   --black: hsl(0deg 0% 0%);
 
-  --svelte-orange: hsl(12deg 95% 62%);
-  --svelte-orange-semi: hsl(12deg 95% 62% / 60%);
+  --orange: hsl(12deg 95% 62%);
+  --orange-semi: hsl(12deg 95% 62% / 60%);
   --yellow-orange: hsl(32deg 95% 62%);
   --dark-orange: hsl(12deg 95% 10%);
-  --pink: hsl(342deg 95% 50%);
-  --orange: hsl(18deg 100% 62%);
+  --red-orange: hsl(350deg 95% 50%);
 
-  --primary: var(--svelte-orange);
-  --secondary: var(--pink);
+  --primary: var(--orange);
+  --secondary: var(--red-orange);
   --tertiary: var(--yellow-orange);
   --background: var(--light);
   --foreground: var(--dark);
@@ -34,7 +33,7 @@
   }
 
   h1 {
-    margin: 5rem 0 1rem;
+    margin: 0 0 1rem;
     font-size: 12rem;
     font-variation-settings: 'wdth' 75;
     font-weight: 700;

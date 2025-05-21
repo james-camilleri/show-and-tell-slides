@@ -21,13 +21,22 @@ export default [
       'Also this will be slightly interactive.',
     ],
   },
-  { image: EuropeMap },
+  {
+    image: EuropeMap,
+    notes: ['Yes it is very small.'],
+  },
   {
     h2: 'How many Maltas could you fit inside the M25?',
   },
-  { image: GreaterLondon },
-  { image: GreaterLondonMaltas },
-  { image: GreaterLondonMalta },
+  { image: GreaterLondon, notes: ["That's the M25."] },
+  {
+    image: GreaterLondonMaltas,
+    notes: [
+      "That's just the main island – there are some other smaller ones.",
+      'If you grind up the whole archipelago to a paste, and spread it over Greater London (which is not exactly the M25) you can fit about 9 in.',
+    ],
+  },
+  { image: GreaterLondonMalta, notes: ['Watford to Woolwich.'] },
   {
     h1: 'The Maltese Language',
     h2: 'an ungodly smoothie of Arabic, Italian and English (with bits)',
@@ -37,12 +46,20 @@ export default [
     component: MalteseWords,
   },
   {
-    // h1: "stuff I'm into",
+    h1: "stuff I'm into",
     component: Stuff,
+    notes: [
+      '17 typewriters currently, unless I missed any.',
+      '9 coffee machines, I think, excluding duplicates and my coffee grinder.',
+      "Didn't count the plants because that would clue me in to the gravity of the situation.",
+    ],
   },
   {
     h1: 'my life so far',
     component: TimeLine,
+  },
+  {
+    h1: "let's talk about my actual job",
   },
   { image: NeoPets },
   { image: GraphicDesign, dark: true },
