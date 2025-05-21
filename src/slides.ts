@@ -3,6 +3,7 @@ import type { Slide } from '$lib/slide'
 import MalteseWords from '$assets/components/MalteseWords.svelte'
 import Stuff from '$assets/components/Stuff.svelte'
 import TimeLine from '$assets/components/TimeLine.svelte'
+import ClientServerArchitecture from '$assets/images/client-server-architecture.png'
 import EuropeMap from '$assets/images/europe-map.jpg'
 import GraphicDesign from '$assets/images/graphic-design.gif'
 import GreaterLondonMalta from '$assets/images/greater-london+malta.png'
@@ -63,5 +64,6 @@ export default [
   },
   { image: NeoPets },
   { image: GraphicDesign, dark: true },
+  { image: ClientServerArchitecture },
   { template: 'End' },
 ] as Slide[]
