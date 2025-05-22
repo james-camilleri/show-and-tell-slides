@@ -226,6 +226,7 @@
   }
 
   .description-wrapper {
+    color: var(--light);
     position: relative;
     height: 10rem;
   }
