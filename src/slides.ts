@@ -3,6 +3,7 @@ import type { Slide } from '$lib/slide'
 import MalteseWords from '$assets/components/MalteseWords.svelte'
 import Stuff from '$assets/components/Stuff.svelte'
 import TimeLine from '$assets/components/TimeLine.svelte'
+import XkcdAbstraction from '$assets/images/abstraction.png'
 import Central from '$assets/images/central.png'
 import ClientServerArchitecture from '$assets/images/client-server-architecture.png'
 import EuropeMap from '$assets/images/europe-map.jpg'
@@ -11,6 +12,7 @@ import GreaterLondonMalta from '$assets/images/greater-london+malta.png'
 import GreaterLondonMaltas from '$assets/images/greater-london+maltas.png'
 import GreaterLondon from '$assets/images/greater-london.png'
 import NeoPets from '$assets/images/neopets.png'
+import XkcdSuccess from '$assets/images/success.png'
 import ToolingNew from '$assets/images/tooling-new.png'
 import Tooling from '$assets/images/tooling.png'
 
@@ -66,6 +68,8 @@ export default [
     h1: "let's talk about my actual job",
   },
   { image: NeoPets },
+  { image: XkcdAbstraction },
+  { image: XkcdSuccess },
   { image: GraphicDesign, dark: true },
   { image: Central },
   { image: ClientServerArchitecture },
