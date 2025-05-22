@@ -135,6 +135,10 @@
     display: flex;
   }
 
+  h2 {
+    z-index: 0;
+  }
+
   svg {
     position: absolute;
     bottom: 0;
