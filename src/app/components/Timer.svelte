@@ -24,7 +24,7 @@
 <style>
   span {
     font-family: var(--font-monospace);
-    font-size: 0.8em;
+    font-size: 1.5rem;
     font-weight: 100;
     color: var(--grey);
   }
